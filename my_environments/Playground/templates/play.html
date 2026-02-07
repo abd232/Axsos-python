@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Play Page</title>
+  </head>
+  <body>
+    <h1 style="text-align: center">Welcome!</h1>
+    <div
+      style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap"
+    >
+      {% for _ in range(times): %}
+      <div
+        style="border:3px solid black; background-color: {{ color or 'red' }}; height:250px; width:250px;"
+      ></div>
+
+      {% endfor %}
+    </div>
+  </body>
+</html>
