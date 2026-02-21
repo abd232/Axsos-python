@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='index.css') }}"
+    />
+  </head>
+  <body>
+    <main>
+      <h1>visited times</h1>
+      <p>{{ session['visited_time'] }} times</p>
+      <h1>counter</h1>
+      <p>{{ session['counter'] }}</p>
+      <div class="btn-container">
+        <form action="/increment" method="post">
+          <input type="number" name="increment_value" value="1" />
+          <input type="submit" value="Increment by Value" />
+        </form>
+        <a href="/incrementbytwo">Increment by 2</a>
+        <a href="/reset">Reset Counter</a>
+        <a href="/destroy_session">Destroy Session</a>
+      </div>
+    </main>
+  </body>
+</html>
