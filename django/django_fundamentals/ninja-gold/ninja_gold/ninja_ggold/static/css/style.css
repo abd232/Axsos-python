@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  width: 80%;
+  margin: auto;
+  padding: 60px 0 0 0;
+}
+
+.status-container input[type="text"] {
+  border: 2px solid black;
+  margin: 0 0 0 10px;
+  padding: 1px 6px;
+  width: 110px;
+  height: 20px;
+}
+
+.forms-container {
+  display: flex;
+  margin: 10px auto;
+  justify-content: space-between;
+}
+
+.box {
+  border: 2px solid #000;
+  margin: 10px 0;
+  width: 250px;
+  height: 250px;
+}
+
+.box * {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.box input[type="button"],
+.box input[type="submit"] {
+  background-color: white;
+  width: 85px;
+  height: 32px;
+  box-shadow: 4px 4px;
+}
+
+.box input[type="button"]:hover,
+.box input[type="submit"]:hover {
+  background-color: lightgray;
+}
+
+.activite-box {
+  overflow-y: scroll;
+  border: 2px solid black;
+  height: 200px;
+  padding: 10px;
+  margin: auto;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}

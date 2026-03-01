@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ninja Gold</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <div class="status-container">
+      <label>Your Gold:</label>
+      <input type="text" value="{{request.session.gold}}" readonly />
+    </div>
+
+    <div class="forms-container">
+      <!-- Farm -->
+      <div class="box">
+        <h3>Farm</h3>
+        <p>(earns 10-20 golds)</p>
+        <form action="/process_money" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="building" value="farm" />
+          <input type="submit" value="Find Gold!" />
+        </form>
+      </div>
+
+      <!-- Cave -->
+      <div class="box">
+        <h3>Cave</h3>
+        <h3>(earns 5-10 golds)</h3>
+        <form action="/process_money" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="building" value="cave" />
+          <input type="submit" value="Find Gold!" />
+        </form>
+      </div>
+
+      <!-- House -->
+      <div class="box">
+        <h3>House</h3>
+        <h3>(earns 2-5 golds)</h3>
+        <form action="/process_money" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="building" value="house" />
+          <input type="submit" value="Find Gold!" />
+        </form>
+      </div>
+
+      <!-- Casino -->
+      <div class="box">
+        <h3>Casino</h3>
+        <h3>(earns/takes 0-50 golds)</h3>
+        <form action="/process_money" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="building" value="casino" />
+          <input type="submit" value="Find Gold!" />
+        </form>
+      </div>
+    </div>
+
+    <!-- Activities log -->
+    <h2>Activities:</h2>
+    <div class="activite-box">
+      {% for a in request.session.activities %}
+      <p class="{{ a.1 }}">{{ a.0 }}</p>
+      {% endfor %}
+    </div>
+  </body>
+</html>
