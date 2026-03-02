@@ -11,6 +11,10 @@ main {
   margin-top: 180px;
 }
 
+form * {
+  display: block;
+}
+
 .btn-container {
   display: flex;
   gap: 20px;

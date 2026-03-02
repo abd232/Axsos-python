@@ -16,11 +16,11 @@
       <p>{{ session['visited_time'] }} times</p>
       <h1>counter</h1>
       <p>{{ session['counter'] }}</p>
+      <form action="/increment" method="post">
+        <input type="number" name="increment_value" value="1" />
+        <input type="submit" value="Increment by Value" />
+      </form>
       <div class="btn-container">
-        <form action="/increment" method="post">
-          <input type="number" name="increment_value" value="1" />
-          <input type="submit" value="Increment by Value" />
-        </form>
         <a href="/incrementbytwo">Increment by 2</a>
         <a href="/reset">Reset Counter</a>
         <a href="/destroy_session">Destroy Session</a>

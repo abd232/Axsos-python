@@ -1,12 +1,16 @@
 from flask import Flask, render_template, request, redirect, session
 app = Flask(__name__)
 app.secret_key = 'keep it secret, keep it safe'
+
 @app.route('/')
 def home():
     if 'visited_time' in session:
-        session['visited_time'] = session.get('visited_time') + 1
+        session['visited_time'] = session['visited_time'] + 1
     else:
         session['visited_time'] = 1
+    
+    print(session['visited_time'])
+
     if 'counter' not in session:
         session['counter'] = 0
     return render_template('index.html')
@@ -32,7 +36,7 @@ def increment():
 @app.route('/reset')
 def reset():
     session['counter'] = 0
-    return render_template('index.html')
+    return redirect('/')
 
 @app.route('/destroy_session')
 def destroy():
