@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Leaderboard</title></head>
+<body style="text-align: center;">
+    <h1>Leaderboard</h1>
+    <table border="1" style="margin: auto; width: 300px;">
+        <tr><th>Name</th><th>Attempts</th></tr>
+        {% for winner in winners %}
+        <tr><td>{{ winner.name }}</td><td>{{ winner.attempts }}</td></tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/">Back to Game</a>
+</body>
+</html>

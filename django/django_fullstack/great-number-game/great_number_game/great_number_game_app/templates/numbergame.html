@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Great Number Game</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: sans-serif;
+        padding-top: 30px;
+      }
+      .box {
+        width: 250px;
+        height: 250px;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        border: 2px solid black;
+      }
+      .red {
+        background-color: #df4747;
+      }
+      .green {
+        background-color: #4e9e4e;
+      }
+      .black {
+        background-color: black;
+      }
+      button {
+        padding: 5px 15px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to the Great Number Game!</h1>
+    <p>I am thinking of a number between 1 and 100</p>
+    <p>Take a guess! (Attempt: {{ attempts }}/5)</p>
+    {% if result == 'too_low' %}
+    <div class="box red">Too low!</div>
+    {% elif result == 'too_high' %}
+    <div class="box red">Too high!</div>
+    {% elif result == 'lose' %}
+    <div class="box black">
+      <p>You Lose!</p>
+      <form action="/reset"><button>Try Again!</button></form>
+    </div>
+    {% elif result == 'correct' %}
+    <div class="box green">
+      <p>{{ request.session.target }} was the number!</p>
+      <p>Attempts: {{ attempts }}</p>
+      <form action="/save_leaderboard" method="post">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Enter your name" required />
+        <button type="submit">Submit Name</button>
+      </form>
+    </div>
+    {% endif %} {% if result != 'correct' and result != 'lose' %}
+    <form action="/guess" method="post">
+      {% csrf_token %}
+      <input type="number" name="guess" required /><br />
+      <button type="submit">Submit</button>
+    </form>
+    {% endif %}
+    <br />
+    <a href="/leaderboard">View Leaderboard</a>
+  </body>
+</html>
