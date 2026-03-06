@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+  </head>
+  <body>
+    <main>
+      <h1>visited times</h1>
+      <p>{{ request.session.visited_time }} times</p>
+      <h1>counter</h1>
+      <p>{{request.session.counter}}</p>
+      <form action="/increment" method="post">
+        {% csrf_token %}
+        <input type="number" name="increment_value" value="1" />
+        <input type="submit" value="Increment by Value" />
+      </form>
+      <div class="btn-container">
+        <a href="/increment_by_two">Increment by 2</a>
+        <a href="/reset">Reset Counter</a>
+        <a href="/destroy_session">Destroy Session</a>
+      </div>
+    </main>
+  </body>
+</html>
