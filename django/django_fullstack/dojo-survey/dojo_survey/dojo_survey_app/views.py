@@ -6,10 +6,9 @@ def index(request):
 
 def result(request):
     context = {
-        'name': request.POST.get('name'),
+        'name': request.POST.get('your_name'),
         'location': request.POST.get("location"),
         'favorite_language': request.POST.get("favorite_language"),
         'comment': request.POST.get("comment")
     }
     return render(request, "result.html", context)
-    

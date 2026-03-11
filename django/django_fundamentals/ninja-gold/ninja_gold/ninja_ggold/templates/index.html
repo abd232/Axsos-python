@@ -62,8 +62,8 @@
     <!-- Activities log -->
     <h2>Activities:</h2>
     <div class="activite-box">
-      {% for a in request.session.activities %}
-      <p class="{{ a.1 }}">{{ a.0 }}</p>
+      {% for activity in request.session.activities %}
+      <p class="{{ activity.1 }}">{{ activity.0 }}</p>
       {% endfor %}
     </div>
   </body>

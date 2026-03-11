@@ -9,6 +9,7 @@ def index(request):
 
     result = request.session.get('result')
     attempts = request.session.get('attempts')
+    print(f"Target: {request.session['target']}")
     return render(request, 'numbergame.html', {'result': result, 'attempts': attempts})
 
 def guess(request):
