@@ -16,7 +16,7 @@ def increment_by_two(request):
         request.session['counter'] = request.session.get('counter') + 2
     else:
         request.session['counter'] = 2
-    return render(request, 'index.html')
+    return redirect('/')
 
 
 def increment(request):
@@ -25,7 +25,7 @@ def increment(request):
         request.session['counter'] = request.session.get('counter') + increment_value
     else:
         request.session['counter'] = increment_value
-    return render(request, 'index.html')
+    return redirect('/')
 
 def reset(request):
     request.session['counter'] = 0
