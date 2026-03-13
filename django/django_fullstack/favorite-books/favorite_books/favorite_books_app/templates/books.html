@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorite Books</title>
+    {% load static %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/books.css' %}"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Welcome, {{ request.session.first_name }}!</h1>
+      <a href="/logout">Log Out</a>
+    </header>
+    <hr />
+    <main>
+      <div>
+        <h2>Add a favorite Book</h2>
+        <form action="/book" method="post">
+          <div>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" />
+          </div>
+          <div>
+            <label for="description">Description</label>
+            <textarea id="description" name="description"></textarea>
+          </div>
+          <div>
+            <button type="submit">Add</button>
+          </div>
+        </form>
+      </div>
+      <div>
+        <h2>All books</h3>
+        {% for book in books %}
+        <div>
+            <a href="/books/{{ book.id }}">{{ book.title }}</a>
+            <p>{{ book.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </main>
+  </body>
+</html>

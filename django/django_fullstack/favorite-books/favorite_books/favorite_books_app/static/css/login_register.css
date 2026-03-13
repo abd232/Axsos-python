@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  padding: 120px 0 0 0;
+  gap: 200px;
+}
+
+.margin-left-100px {
+  margin-left: 100px;
+}
+
+.container {
+  width: 300px;
+}
+
+.container h1 {
+  text-align: center;
+}
+
+.container > form > * {
+  margin: 20px;
+}
+
+.container form div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container form div button {
+  padding: 6px;
+  margin: 20px auto;
+}
