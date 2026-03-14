@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="d-flex justify-content-between align-items-center w-75 p-3 m-auto">
+        <h1>
+            Welcome to Sovage Vintage, {{ request.session.first_name }}
+        </h1>
+        <a href="/logout" class="btn btn-link text-primary">
+            Log out
+        </a>
+    </div>
+    <div class="d-flex justify-content-end w-75 p-3 m-auto">
+        <a href="cars/new">+ Post a Car for sale</a>
+    </div>
+    <table class="table table-striped table-bordered w-75 m-auto">
+        <tr>
+            <th>Model</th>
+            <th>Year</th>
+            <th>Dealer</th>
+            <th>Action</th>
+            <th>Status</th>
+        </tr>
+        {% if not cars %}
+        <tr>
+            <td colspan="5" class="text-center">no cars posted yet <a href="cars/new">start a new post</a></td>
+        </tr>
+        {% else %}
+        {% for car in cars %}
+        <tr>
+            <td>{{car.model}}</td>
+            <td>{{car.year}}</td>
+            <td>{{car.dealer}}</td>
+            <td>
+                {% if car.is_for_user %}
+                <div class="d-flex gap-2">
+                    <a href="cars/edit/{{car.car_id}}">edit</a>
+                    <a href="cars/remove/{{car.car_id}}">remove</a>
+                </div>
+                {% else %}
+                <a href="cars/{{car.car_id}}">view</a>
+                {% endif %}
+            </td>
+            <td>
+                {% if car.is_soldout %}
+                SOLD
+                {% else %}
+                For Sale
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        {% endif %} 
+    </table>
+    <div class="d-flex justify-content-end w-75 m-auto">
+        <a href="users/{{request.session.user_id}}">My Purchase Orders</a>
+    </div>
+</div>
+
+</body>
+</html>
